@@ -66,27 +66,28 @@
 % ]{Liberation Mono}
 % \setmathfont{Libertinus Math}
 
-\RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
-\setCJKmainfont[
-	Mapping=fullwidth-stop,
-    UprightFont = * ,       % 默认 Regular
-    BoldFont = * Bold,
-    ItalicFont = * ,        % 中文没有 italic，指向 Regular
-    BoldItalicFont = * Bold
-]{Noto Serif CJK SC}
-\setCJKsansfont[
-    UprightFont = * ,
-    BoldFont = * Bold,
-    ItalicFont = * ,
-    BoldItalicFont = * Bold
-]{Noto Sans CJK SC}
-\setCJKmonofont[
-    UprightFont = * ,
-    BoldFont = * Bold,
-    ItalicFont = * ,
-    BoldItalicFont = * Bold
-]{Noto Sans Mono CJK SC}
-
+% =================如需中文支持,将下列代码取消注释即可
+% \RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
+% \setCJKmainfont[
+% 	Mapping=fullwidth-stop,
+%     UprightFont = * ,       % 默认 Regular
+%     BoldFont = * Bold,
+%     ItalicFont = * ,        % 中文没有 italic，指向 Regular
+%     BoldItalicFont = * Bold
+% ]{Noto Serif CJK SC}
+% \setCJKsansfont[
+%     UprightFont = * ,
+%     BoldFont = * Bold,
+%     ItalicFont = * ,
+%     BoldItalicFont = * Bold
+% ]{Noto Sans CJK SC}
+% \setCJKmonofont[
+%     UprightFont = * ,
+%     BoldFont = * Bold,
+%     ItalicFont = * ,
+%     BoldItalicFont = * Bold
+% ]{Noto Sans Mono CJK SC}
+% ==================
 \newcounter{problemname}
 \numberwithin{equation}{problemname}
 \numberwithin{section}{problemname}
