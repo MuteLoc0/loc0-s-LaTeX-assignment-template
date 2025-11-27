@@ -1,0 +1,129 @@
+\ProvidesPackage{hw}
+
+% \RequirePackage{fontspec}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{hyperref}
+\RequirePackage{graphicx,float,subcaption}
+\RequirePackage{hologo,verbatim,fancyvrb,layout,multicol}
+\RequirePackage{unicode-math}
+\RequirePackage{cases}			%多行公式编号宏包
+\RequirePackage{indentfirst}	%首行缩进宏包
+\RequirePackage{cancel}			%划去公式宏包
+\RequirePackage{relsize}		%公式字体大小\mathlarger
+\RequirePackage{braket}			%狄拉克算符
+\RequirePackage[left=2.5cm, right = 2.5cm, top = 2.5cm, bottom = 2.5cm]{geometry}
+
+\hypersetup{ % Set up hyperref options
+	unicode, % Use unicode for links
+	pdfborder={0 0 0}, % Suppress border around pdf
+	%xetex,
+	%pagebackref=true,
+	%hyperfootnotes=false, % We already use footmisc
+	bookmarksdepth=section,
+	bookmarksopen=true, % Expand the bookmarks as soon as the pdf file is opened
+	%bookmarksopenlevel=4,
+	linktoc=all, % Toc entries and numbers links to pages
+	breaklinks=true,
+	colorlinks=true,
+	%allcolors=DarkGreen,
+	citecolor = DarkOrange,
+    linkcolor = Blue,
+    %pagecolor = Blue,
+	urlcolor = OliveGreen,
+}
+
+\RequirePackage{tikz}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}  %条纹
+\usetikzlibrary{decorations.markings}
+
+\tikzset{
+    mid arrow/.style={
+        decoration={
+            markings, 
+            mark=at position #1 with {\arrow{stealth}}
+        },
+        postaction={decorate}
+    },
+    mid arrow/.default=0.5
+}%tikz线中间加箭头
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt  
+
+\RequirePackage[force]{filehook} % Fixes an error
+\RequirePackage{libertinus}
+% \setromanfont[
+%     Scale = 1.04,
+% ]{Libertinus Serif}
+% \setsansfont[
+%     Scale=1
+% ]{Libertinus Sans}
+% \setmonofont[
+%     Scale=.89
+% ]{Liberation Mono}
+% \setmathfont{Libertinus Math}
+
+\RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
+\setCJKmainfont[
+	Mapping=fullwidth-stop,
+    UprightFont = * ,       % 默认 Regular
+    BoldFont = * Bold,
+    ItalicFont = * ,        % 中文没有 italic，指向 Regular
+    BoldItalicFont = * Bold
+]{Noto Serif CJK SC}
+\setCJKsansfont[
+    UprightFont = * ,
+    BoldFont = * Bold,
+    ItalicFont = * ,
+    BoldItalicFont = * Bold
+]{Noto Sans CJK SC}
+\setCJKmonofont[
+    UprightFont = * ,
+    BoldFont = * Bold,
+    ItalicFont = * ,
+    BoldItalicFont = * Bold
+]{Noto Sans Mono CJK SC}
+
+\newcounter{problemname}
+\numberwithin{equation}{problemname}
+\numberwithin{section}{problemname}
+\renewcommand{\thesubsection}{(\arabic{subsection})}
+
+\newcounter{alphsec}[problemname]
+\renewcommand{\thealphsec}{(\alph{alphsec})}
+\newcommand{\alphsection}[1]{%
+    \par
+    \addvspace{3.25ex plus 1ex minus .2ex}
+    \refstepcounter{alphsec}
+    \noindent
+    \textbf{\large\thealphsec\quad #1}
+    \par
+    \nobreak
+    \addvspace{1.5ex plus .2ex}
+}
+
+\newenvironment{problem}{
+    \stepcounter{problemname}  %计数器加一
+    \par\pdfbookmark{Problem \arabic{problemname} .}{problem\arabic{problemname}}    %为pdf增加书签
+    \section*{\textsc{Problem \arabic{problemname}.} }\par
+}{\par}
+
+\newenvironment{note}{\par\noindent\textsc{Note of \textbf{Problem \arabic{problemname}}. }}{\\\par}
+
+\AtBeginDocument{
+    \newcommand*{\eu}{\mathrm{e}}
+    \newcommand*{\ramuno}{\mathrm{i}}
+    \newcommand*{\dbar}{\mathrm{đ}}
+    % \newcommand*{\dif}{\mathrm{d}}
+    \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+    \newcommand{\bm}[1]{\symbfit{#1}}
+    \renewcommand*{\varPi}{\symit{\Pi}}
+    \renewcommand*{\varPhi}{\symit{\Phi}}
+    \renewcommand*{\varLambda}{\symit{\Lambda}}
+    \renewcommand*{\varTheta}{\symit{\Theta}}
+}
+
+\endinput
