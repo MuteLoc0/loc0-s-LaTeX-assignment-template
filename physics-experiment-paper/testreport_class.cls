@@ -78,7 +78,9 @@
 }
 
 % 设置粗体
-\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+% \setCJKfamilyfont{song}[AutoFakeBold]{SimSun} 	%如使用win系统编译,使用此行
+\setCJKfamilyfont{song}[AutoFakeBold]{Noto Serif CJK SC}	%如使用其他系统,自行安装Noto Serif系列字体后使用此行
+
 \newcommand*{\bfsongti}{\CJKfamily{song}}
 \setCJKfamilyfont{hei}[AutoFakeBold]{SimHei}
 \newcommand*{\bfheiti}{\CJKfamily{hei}}
