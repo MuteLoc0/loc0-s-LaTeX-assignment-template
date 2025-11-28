@@ -1,0 +1,112 @@
+\documentclass{testreport_class}
+%%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
+%%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
+%%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
+\usepackage[colorlinks,urlcolor=blue,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\usepackage{cite}
+% 在文档开始前设置正文字号
+\renewcommand\normalsize{\zihao{-4}\selectfont}
+
+\newenvironment{abstruct}{\par\noindent\normalfont \CJKfamily{song}\bfseries \zihao{-4}{摘要：}\normalfont}{\vspace{-1.3em}}
+
+\renewcommand\refname{}
+
+\usepackage{setspace}%引言行距
+\usepackage{etoolbox} % 删除 References 标题
+\makeatletter
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\makeatother
+
+\title{这是标题，例如：利用平板电容器测量真空介电常数}
+\author{这是作者，物理学系}
+\date{}             %本条日期防止\@date命令自动填充
+%\date{2024/9/5}    %可能不必加日期
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%引言区结束%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	% 页面风格
+	\pagestyle{bianyi}
+
+	\maketitle
+
+    \begin{abstruct}
+      这里是摘要。
+    \end{abstruct}
+    \section{\label{Sec.1}引言}
+      本模板可以插入article文档类中的各类环境，以下进行一小部分测试，各位可以自行调试。
+
+      模板的类文档文件是testreport\_class.cls，如遇到必须调整的或冲突的，可以自行删改。以下将在第\ref{Sec.2}节中详细介绍模板使用方法以及部分注意事项。
+    
+      \section{\label{Sec.2}实验原理}
+
+      \subsection{模板的使用和注意事项}
+
+        文件夹中三个重要文件为``template.tex"、``ref.bib"和``testreport\_class"，请确保这三个文件处于同一文件路径下。
+
+        在编译文档时，\LaTeX{}编译格式请务必使用xelatex！
+        
+        \LaTeX{}编译格式请务必使用xelatex！
+        
+        \LaTeX{}编译格式请务必使用xelatex！
+
+        在引用文献时，本模板使用cite宏包，bib文件是``ref.bib''，请将引用文献的正确bib格式写入该文件中。
+
+        ``testreport\_class"文件是类文档文件，定义了本模板各种排版参数，同时提前引入了amsmath、graphics等常用宏包。如需引入其他宏包，可以在tex文件引言处直接添加。
+    \section{实验装置及过程}
+      可以使用figure环境轻松插入图片。如下示例：  
+    
+      电介质的介电常数$\varepsilon$，亦称“电容率”，是表征电介质材料绝缘性的一个主要指标。真空的介电常数$\varepsilon_{0}$是一个基本的物理学常量。
+    
+    %%插入图片。H代表hfill绝对位置。
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.5\paperwidth]{pic/pingxing.png}
+			\caption{\label{Fig.1}平行板电容器模型图}
+		\end{figure}
+    
+      这里可以使用Fig.~\ref{Fig.1}用来引用图像。  %"~\ref{这里填入label名称}"最好别忘记"~"，强制插入空格且不换行。引用前记得在相应标题处加\label{}
+    \section{\label{Sec.3}实验结果和分析}
+    \subsection{实验结果}
+      还可以使用table环境插入表格，如果不喜欢table环境也可以使用array。以下是table环境示例：
+
+    %%插入表格
+    \begin{table}[!h]
+    \centering
+    \caption{\label{Tab.1}一些主要的实验数据}
+    \begin{tabular}{p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}}
+    \hline 
+    参量1/单位 & 参量2/单位 & 参量3/单位 \\
+    \hline 
+    14.12 & 23.52 & 1.23 \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+    这里可以使用Table~\ref{Tab.1}用来引用表格。
+    \subsection{\label{Sec.4}数据处理与误差分析}
+    测试下插入公式以及交叉引用公式。
+
+    行内公式：$\displaystyle \frac{\partial v}{\partial y} =\frac{\partial u}{\partial x} =-6xy$且$\displaystyle \frac{\partial v}{\partial x} =-\frac{\partial u}{\partial y} =3\left( x^{2} -y^{2}\right)$. 
+
+    行间公式：
+
+    通过
+    \begin{equation}\label{Eqn.1}
+      f( z) =\pm\sqrt{2\rho }\left(\sin\frac{\phi }{2} +i\cos\frac{\phi }{2}\right) +iC_{2} =\pm\sqrt{2z} +iC_{2}.
+    \end{equation}
+    得到某样结果。
+
+    引用公式测试，通过Eqn.~\ref{Eqn.1}得知。
+    
+    \section{\label{Sec.5}结论}
+    这里测试引用文献。前人研究过这个问题\textsuperscript{\cite{yaakub_fourth_1999}}。前人研究过这个问题\textsuperscript{\cite{yang_friction_2010}}。前人研究过这个问题\textsuperscript{\cite{yang_friction_2010,_frenkel-kontorova_2014}}。
+    
+    \section{参考文献}
+    \begin{spacing}{1}
+      \nocite{*}    %用来显示所有的参考文献
+      \bibliographystyle{unsrt}       %本条命令定义了文献引用格式，一般不用修改
+      \bibliography{ref}
+    \end{spacing}
+\end{document}
