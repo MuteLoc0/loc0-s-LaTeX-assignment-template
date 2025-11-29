@@ -2,28 +2,12 @@
 %%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
 %%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
 %%注意：必须使用xelatex进行编译，否则会编译失败导致无pdf文件生成！
-\usepackage[colorlinks,urlcolor=blue,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
-\usepackage{cite}
-% 在文档开始前设置正文字号
-\renewcommand\normalsize{\zihao{-4}\selectfont}
-
-\newenvironment{abstruct}{\par\noindent\normalfont \CJKfamily{song}\bfseries \zihao{-4}{摘要：}\normalfont}{\vspace{-1.3em}}
-
-\renewcommand\refname{}
-
-\usepackage{setspace}%引言行距
-\usepackage{etoolbox} % 删除 References 标题
-\makeatletter
-\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
-\makeatother
 
 \title{这是标题，例如：利用平板电容器测量真空介电常数}
 \author{这是作者，物理学系}
 \date{}             %本条日期防止\@date命令自动填充
 %\date{2024/9/5}    %可能不必加日期
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%引言区结束%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 	% 页面风格
@@ -93,12 +77,12 @@
     行间公式：
 
     通过
-    \begin{equation}\label{Eqn.1}
+    \begin{equation}\label{eq.1}
       f( z) =\pm\sqrt{2\rho }\left(\sin\frac{\phi }{2} +i\cos\frac{\phi }{2}\right) +iC_{2} =\pm\sqrt{2z} +iC_{2}.
     \end{equation}
     得到某样结果。
 
-    引用公式测试，通过Eqn.~\ref{Eqn.1}得知。
+    引用公式测试，通过Eq.~\eqref{eq.1}得知。
     
     \section{\label{Sec.5}结论}
     这里测试引用文献。前人研究过这个问题\textsuperscript{\cite{yaakub_fourth_1999}}。前人研究过这个问题\textsuperscript{\cite{yang_friction_2010}}。前人研究过这个问题\textsuperscript{\cite{yang_friction_2010,_frenkel-kontorova_2014}}。

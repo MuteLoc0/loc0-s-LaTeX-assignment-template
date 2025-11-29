@@ -2,7 +2,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{testreport_class}[2023/11/18 binayi testReport]
+\ProvidesClass{testreport_class}
 
 \LoadClass[12pt,a4paper]{article}
 
@@ -23,6 +23,10 @@
 \RequirePackage{amssymb}
 \RequirePackage{bm}
 \RequirePackage{titletoc}
+\RequirePackage{cite}
+\RequirePackage[colorlinks,urlcolor=blue,linkcolor=blue,anchorcolor=blue,citecolor=blue]{hyperref}
+\RequirePackage{setspace}%引言行距
+\RequirePackage{etoolbox} % 删除 References 标题
 % 首行缩进
 \RequirePackage{indentfirst}
 \renewcommand*{\baselinestretch}{1.625}%行间距
@@ -84,8 +88,8 @@
 \newcommand*{\bfsongti}{\CJKfamily{song}}
 \setCJKfamilyfont{hei}[AutoFakeBold]{SimHei}
 \newcommand*{\bfheiti}{\CJKfamily{hei}}
-% 设置字体
-\setmainfont{Times New Roman}
+
+% \setmainfont{Times New Roman}	% 如果需要times new roman，取消注释。这在linux系统上会报字体缺失错误，需要自行安装。
 
 %自定义小标题样式
 \ctexset{
@@ -198,3 +202,13 @@
 	breakatwhitespace=true,
 	tabsize=3,
 }
+
+\renewcommand\normalsize{\zihao{-4}\selectfont}
+
+\newenvironment{abstruct}{\par\noindent\normalfont \CJKfamily{song}\bfseries \zihao{-4}{摘要：}\normalfont}{\vspace{-1.3em}}
+
+\renewcommand\refname{}
+
+\makeatletter
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+\makeatother
