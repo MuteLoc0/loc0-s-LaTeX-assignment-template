@@ -1,0 +1,66 @@
+\documentclass[aspectratio=169,8pt]{beamer}
+\usepackage{how2-style}
+
+\usepackage{metalogo}
+\usepackage{bm}
+\usepackage[skins,listings]{tcolorbox}
+\usepackage{biblatex}
+\addbibresource{main.bib}
+\newtcblisting{exampleB}[2][]{%
+  colframe=red!50!yellow!50!black,
+  colback=white,
+  coltitle=red!50!yellow!3!white,
+  bicolor,colbacklower=red!50!yellow!5!white,
+  fonttitle=\sffamily\bfseries,
+  sidebyside,text and listing,
+  title=#2,#1}
+
+\newcommand{\eu}{\mathrm{e}}
+\newcommand{\ramuno}{\mathrm{i}}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\renewcommand{\varPi}{\symit{\Pi}}
+\renewcommand{\varPhi}{\symit{\Phi}}
+\renewcommand{\varLambda}{\symit{\Lambda}}
+
+\title{\textbf{\textcolor{white}{How 2 \textrm{\LaTeX}}}}
+\subtitle{\Large \textcolor{white}{Title}}
+\author{Name\inst{1}}
+\institute[SCH]{
+    \inst{1}%
+    Department of Physics\\
+    Fudan University
+}
+\date{\today}
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+
+
+\section{section}
+\frame{\frametitle{Outline}\tableofcontents[currentsection, subsectionstyle=show/shaded/hide, subsubsectionstyle=show/shaded/hide]}
+
+\begin{frame}[fragile]
+    \frametitle{Example}
+    If you need to nest other environments (e.g. minipage) in the frame, it's best to add the fragile option.
+
+    Example:
+\begin{Verbatim}[frame=single, formatcom=\color{black}]
+    \documentclass[A4]{article}
+    \begin{frame}[fragile]
+        % input
+     \end{frame}  % <--- 注意：这里前面加了空格，防止 Beamer 误判
+    \end{Verbatim}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Referance}
+    \printbibliography
+\end{frame}
+\end{document}

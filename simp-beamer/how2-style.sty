@@ -1,0 +1,76 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{how2-style}
+
+% 添加必要的宏包
+\RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
+\RequirePackage[english]{babel}
+% \RequirePackage{fontspec}
+\RequirePackage{graphicx,xcolor,float,subcaption}
+\RequirePackage{hologo,verbatim,fancyvrb,layout,multicol}
+\RequirePackage{float}          %图片位置格式包
+\RequirePackage{unicode-math}
+\RequirePackage{amssymb}        %数学公式宏包
+\RequirePackage{amsmath}        %数学公式宏包
+\RequirePackage{hyperref}       %自动引用宏包~\autoref{}
+\RequirePackage{indentfirst}    %保留章节后的缩进
+\RequirePackage{tikz}
+
+
+\linespread{1.3541667}          % 设置行间距
+\setlength{\parindent}{2em}     % 缩进
+\usefonttheme[onlymath]{serif}  %beamer公式字体改进
+
+% 设置Beamer模板和样式
+\setbeamertemplate{section in toc}[sections numbered] 
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{frametitle}
+  {\vspace{0.3cm}
+   \insertframetitle
+   \vspace{-0.5cm}}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\textcolor{white}{\insertshortauthor}
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{13em}
+    \textcolor{white}{\insertframenumber{} / \inserttotalframenumber\hspace*{0ex}}
+  \end{beamercolorbox}}
+
+  \vskip0pt%
+}
+
+% 定义颜色
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{HTML}{3735B0} % 蓝色
+\definecolor{main}{rgb}{0, 0, 0} % 默认黑色
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+\setbeamercolor{title}{fg=main}
+\setbeamercolor{frametitle}{fg=main}
+\setbeamercolor{section in toc}{fg=text}
+\setbeamercolor{normal text}{fg=text}
+\setbeamercolor{block title}{fg=main,bg=mygrey!20!white}
+\setbeamercolor{block body}{fg=black,bg=mygrey!20!white}
+\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+\setbeamercolor{math text}{fg=black}
+
+% 页脚设置
+\setbeamercolor{author in head/foot}{fg=black, bg=mygrey}
+\setbeamercolor{title in head/foot}{fg=black, bg=mygrey}
+\setbeamercolor{structure}{fg=main, bg=mygrey} % 设置sidebar颜色
+
+% 排版设置：左右页间距
+\def\swidth{1em}
+\setbeamersize{sidebar width right=\swidth}
+\setbeamersize{sidebar width left=\swidth}
+\setbeamerfont{title in sidebar}{size=\scriptsize}
+\setbeamerfont{section in sidebar}{size=\tiny}
+
+\endinput
