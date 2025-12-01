@@ -36,21 +36,35 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{tikzmark}
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta,bending}
 \usetikzlibrary{calc}
 \usetikzlibrary{patterns}  %条纹
 \usetikzlibrary{decorations.markings}
 
 \tikzset{
+    % 1. 定义存储变量的键（类似于定义局部变量）
+    mid arrow options/.is family,
+    mid arrow options/.cd,
+    pos/.store in=\midarrowpos,   % 将 pos 的值存入 \midarrowpos
+    type/.store in=\midarrowtype, % 将 type 的值存入 \midarrowtype
+    pos=0.5,                      % 默认位置
+    type=stealth,                 % 默认箭头类型
+}
+
+\tikzset{
+    % 2. 定义主样式
     mid arrow/.style={
+        % 先处理传入的参数
+        mid arrow options/.cd, #1,
+        % 切回 tikz 上下文来应用装饰
+        /tikz/.cd, 
         decoration={
             markings, 
-            mark=at position #1 with {\arrow{stealth}}
+            mark=at position \midarrowpos with {\arrow{\midarrowtype}}
         },
         postaction={decorate}
-    },
-    mid arrow/.default=0.5
-}%tikz线中间加箭头
+    }
+}
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt  
 
 \RequirePackage[force]{filehook} % Fixes an error
@@ -67,26 +81,26 @@
 % \setmathfont{Libertinus Math}
 
 % =================如需中文支持,将下列代码取消注释即可
-% \RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
-% \setCJKmainfont[
-% 	Mapping=fullwidth-stop,
-%     UprightFont = * ,       % 默认 Regular
-%     BoldFont = * Bold,
-%     ItalicFont = * ,        % 中文没有 italic，指向 Regular
-%     BoldItalicFont = * Bold
-% ]{Noto Serif CJK SC}
-% \setCJKsansfont[
-%     UprightFont = * ,
-%     BoldFont = * Bold,
-%     ItalicFont = * ,
-%     BoldItalicFont = * Bold
-% ]{Noto Sans CJK SC}
-% \setCJKmonofont[
-%     UprightFont = * ,
-%     BoldFont = * Bold,
-%     ItalicFont = * ,
-%     BoldItalicFont = * Bold
-% ]{Noto Sans Mono CJK SC}
+\RequirePackage[UTF8, scheme=plain, punct=plain, zihao=false]{ctex}
+\setCJKmainfont[
+	Mapping=fullwidth-stop,
+    UprightFont = * ,       % 默认 Regular
+    BoldFont = * Bold,
+    ItalicFont = * ,        % 中文没有 italic，指向 Regular
+    BoldItalicFont = * Bold
+]{Noto Serif CJK SC}
+\setCJKsansfont[
+    UprightFont = * ,
+    BoldFont = * Bold,
+    ItalicFont = * ,
+    BoldItalicFont = * Bold
+]{Noto Sans CJK SC}
+\setCJKmonofont[
+    UprightFont = * ,
+    BoldFont = * Bold,
+    ItalicFont = * ,
+    BoldItalicFont = * Bold
+]{Noto Sans Mono CJK SC}
 % ==================
 \newcounter{problemname}
 \numberwithin{equation}{problemname}
